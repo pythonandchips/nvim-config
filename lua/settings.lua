@@ -1,0 +1,13 @@
+vim.opt.autowrite = true
+vim.opt.autoread = true
+vim.opt.ruler = true
+vim.opt.number = true
+vim.opt.timeoutlen = 1000
+vim.opt.history = 256
+vim.opt.shiftwidth = 2
+vim.opt.autoindent = true
+vim.opt.smarttab = true
+vim.opt.expandtab = true
+vim.opt.showmatch = true
+vim.opt.splitright = true
+vim.opt.wrap = false
