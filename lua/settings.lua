@@ -5,6 +5,7 @@ vim.opt.number = true
 vim.opt.timeoutlen = 1000
 vim.opt.history = 256
 vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
 vim.opt.autoindent = true
 vim.opt.smarttab = true
 vim.opt.expandtab = true

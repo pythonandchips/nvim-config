@@ -42,7 +42,12 @@ cmp.setup({
 
     -- Ctrl+Space to trigger completion menu
     ['<C-Space>'] = cmp.mapping.complete(),
-  }
+  },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+  }, {
+    { name = 'buffer' },
+  })
 })
 
 require('nvim-highlight-colors').setup {}
@@ -66,3 +71,4 @@ require('telescope').setup {
     },
   },
 }
+
