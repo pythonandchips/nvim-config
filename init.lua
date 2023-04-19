@@ -57,18 +57,37 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   command = [[%s/\s\+$//e]],
 })
 
-require('telescope').setup {
+require('telescope').setup{
   extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
+    },
     ["telescope-alternate"] = {
       mappings = {
-        {
-          'app/models/(.*).rb', {
-            { 'spec/models/[1]_spec.rb', 'Spec' },
-            { 'app/controller/[1:pluralize].rb', 'Controller' },
+        { pattern = 'app/models/(.*).rb',
+          targets = {
+            { template = 'spec/models/[1]_spec.rb', label = 'Spec' },
+            { template = 'app/controllers/[1:pluralize]_controller.rb', label = 'Controller' },
+            { template = 'app/views/[1:pluralize]/*.html.erb', label = 'Views' }
           }
-        }
+        },
+        { pattern = 'app/controllers/(.*)_controller.rb',
+          targets = {
+            { template = 'spec/controllers/[1]_controller_spec.rb', label = 'Spec' },
+            { template = 'spec/requests/[1]_controller_spec.rb', label = 'Spec' },
+            { template = 'app/models/[1:singularize].rb', label = 'model' },
+            { template = 'app/views/[1]/*.html.erb', label = 'Views' },
+            { template = 'app/helpers/[1]_helper.rb', label = 'Helper' }
+          }
+        },
       },
     },
   },
 }
+
+require('autopairs')
 

@@ -21,10 +21,21 @@ return {
       highlight = {
         enable = true,  -- Enable syntax highlighting for everything
       },
+      autopairs = {
+        enable = true
+      },
+      endwise = {
+        enable = true,
+      },
+      indent = { enable = true }
     },
     config = function(_, opts)
       require('nvim-treesitter.configs').setup(opts)
     end,
+    dependencies = {
+      "windwp/nvim-autopairs",
+      "RRethy/nvim-treesitter-endwise"
+    }
   },
-  'nvim-treesitter/playground',
+  'nvim-treesitter/playground'
 }
