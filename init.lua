@@ -84,7 +84,18 @@ require('telescope').setup{
             { template = 'app/helpers/[1]_helper.rb', label = 'Helper' }
           }
         },
+        { pattern = 'app/javascript/(.*).js',
+          targets = {
+            { template = 'spec/javascripts/[1].test.js', label = 'Spec' },
+          }
+        },
+        { pattern = 'spec/javascripts/(.*).test.js',
+          targets = {
+            { template = 'app/javascript/[1].js' },
+          }
+        },
       },
+      open_only_one_with = "vertical_split",
     },
   },
 }
